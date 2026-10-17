@@ -1,6 +1,9 @@
 ---
 name: flutter-pixel-align
 description: 当需要将 Flutter 应用 UI 与参考应用、设计稿或历史截图进行像素级对齐与视觉回归验收时使用。提供"同条件截图 → 提取可测量指标（间距/颜色/字体/组件几何）→ 量化 diff → 结构化验收报告 → 修复后回归验证"的严格工作流。硬性要求：以测量数据而非主观判断作为"已对齐/已通过"的依据，禁止仅凭"看起来差不多"下结论。
+version: 1.0.0
+author: Yang-Yin734
+tags: [flutter, pixel-perfect, ui-testing, visual-regression, golden-tests, agent-skill]
 ---
 
 # Flutter UI 像素级对齐与视觉回归验收
