@@ -1,5 +1,7 @@
 # flutter-pixel-align
 
+> 中文说明：[README.zh-CN.md](README.zh-CN.md)
+
 A reusable agent **skill** that turns "make the UI look the same" from a subjective feeling into a measurable engineering process. It is built for Flutter projects that need to align the current UI pixel-by-pixel against a reference (a competitor app, a Figma/design export, or a previously approved `golden` screenshot) and produce a quantitative acceptance report that can be re-verified on every change.
 
 > Core rule of this skill: **no measurement, no "aligned".** Any "aligned / passed" conclusion must be backed by numbers or a diff image — never by "looks about the same".
@@ -60,6 +62,14 @@ The agent will pick it up automatically and trigger it when you ask for pixel-le
    ```
 
    Output: MSE, max per-pixel diff, differing-pixel ratio, per-region breakdown, and a highlighted `diff.png`. Exit code is `1` when the differing-pixel ratio exceeds `--fail-ratio` — useful as a CI / PR visual-regression gate.
+
+   To extract the exact color at a coordinate and its ΔE against the current screenshot:
+
+   ```bash
+   python scripts/pixel_diff.py reference.png current.png --color-at 40,40
+   ```
+
+   This prints the hex at `(40,40)` for both images plus the CIE76 ΔE (verdict PASS ≤2 / WARN ≤5 / FAIL >5).
 4. **Fill the report.** Use `references/report-template.md` to record measured values and a number-based conclusion.
 5. **Fix & re-verify.** After edits, re-run steps 2–4 until failures are zero and no prior PASS item regressed, then freeze with `flutter test --update-goldens`.
 
